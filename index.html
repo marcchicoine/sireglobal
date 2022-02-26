@@ -23,13 +23,16 @@
 					}
 			.buzz {
 				position: relative;
-				top: 40%;
+				display: flex;
+				height: 100%;
    				width: 100%; 
-				   left: 50%;
+				justify-content: center;
+				align-items: center;
 				z-index: 10;
-				-webkit-animation: fadeOut 4s;
-   				 animation: fadeOut 4s;
+				-webkit-animation: fadeOut 2s;
+   				 animation: fadeOut 2s;
    				 animation-fill-mode: forwards;
+					z-index: 10;
 			}
 		</style>
 		<link rel="preload" href="./scene.json" as="fetch">
