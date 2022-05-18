@@ -6,15 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style.css">
 		<style>
+			html {
+				margin: 0;
+				padding: 0;
+			}
 			body {
 				width: 100%;
 				height: 100%;
 				margin: 0;
 				position: fixed;
+				top: -30px;
+				padding: 0;
 				background: rgba(0,0,0, 1);
 			}
-			canvas { width: 100%; height: 100%; outline: none; }
-			#container { width: 100%; height: 100%; position: relative; }
 			@keyframes fadeOut {
    				 0% { opacity: 1;}
    				 90% { opacity: 1;width: 100%; height: 100%;}
@@ -35,7 +39,6 @@
 					z-index: 10;
 			}
 		</style>
-		<link rel="preload" href="./scene.json" as="fetch">
 	</head>
 	<body>
 		<nav role="navigation">
@@ -50,21 +53,18 @@
 			  <span></span>
 			  
 			  <ul id="menu">
-				<a  href="/index.html"><li>Home</li></a>
-					<div class="css-treeview">
+				<a  href="./index.html"><li>Home</li></a>
+					<!-- <div class="css-treeview">
 							<li>
 							 <input type="checkbox" id="item-0-0-0" />
 								 <label for="item-0-0-0">
 								 </label>
 								<ul>
-									<li><a  href="/mainFloor/index.html">Main Room</a></li>
-									<li><a  href="/studioA/index.html" >Studio A</a></li>
-									<li><a  href="/studioB/index.html">Studio B</a></li>
 								</ul>   
 							</li>
-					 </div> 
-				<a href="#"><li>Gallery</li></a>
-				<a href="/location/location.html"><li>Location</li></a>
+					 </div>  -->
+				<a href="./gallery/gallery.html"><li>Gallery</li></a>
+				<a href="./location/location.html"><li>Location</li></a>
 				<a href="#"><li>About Gyasi </li></a>
 			  </ul>
 			</div>
@@ -94,13 +94,7 @@
 				</svg>
 				
 		  </div>
-		<div id='container'>
-			<canvas id="canvas3d"></canvas>		
-		</div>
-		<script type="module">
-			import { Application } from './runtime.js';
-			const app = new Application();
-			app.load('./scene.json');
-		</script>
+			<iframe src='https://my.spline.design/bighousecopy-68a572d92e68f6c9cd7814bfd68a81e8/' frameborder='0' width='110%' height='110%'></iframe>
+		
 	</body>
 </html>

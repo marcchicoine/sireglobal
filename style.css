@@ -173,19 +173,6 @@
     vertical-align: middle;
 }
  
-.css-treeview label::before
-{
-    text-decoration: none;
-    color: #733753; 
-    transition: color 0.3s ease;
-    content: "Rent";
-    width: 16px;
-    margin: 0 22px 0 0;
-    vertical-align: middle;
-    
-}
- 
-
 @media screen and (-webkit-min-device-pixel-ratio:0)
 {
     .css-treeview 
