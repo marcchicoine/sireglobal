@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+    div {
+        display: flex;
+        justify-content: space-around;
+       align-items: center;
+       height: 100%;
+        width: 100%;
+    }
+    p { width: 40%;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+    section {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .grid {
+	pointer-events: none;
+	position: absolute;
+	width: 110%;
+	height: 110%;
+	top: -5%;
+	left: -5%;
+	display: grid;
+	grid-template-columns: repeat(50,2%);
+	grid-template-rows: repeat(50,2%);
+}
+
+.grid__item {
+	position: relative;
+}
+
+.grid__item-img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+/* Shorthand grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end */
+
+.pos-1 {
+	grid-area: 10 / 1 / 26 / 7;
+}
+
+.pos-2 {
+	grid-area: 1 / 18 / 9 / 27;
+}
+
+.pos-3 {
+	grid-area: 1 / 36 / 14 / 42;
+}
+
+.grid--img .grid__item {
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	will-change: transform;
+}
+
+.grid--img .grid__item-img {
+	flex: none;
+	width: calc(100% + 100px);
+	height: calc(100% + 100px);
+	will-change: transform;
+}
+</style>
+</head>
+<body>
+    <nav role="navigation">
+        <div id="menuToggle">
+          <!--
+          A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it.
+          -->
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+          
+          <ul id="menu">
+            <a  href="./index.html"><li>Home</li></a>
+                <!-- <div class="css-treeview">
+                        <li>
+                         <input type="checkbox" id="item-0-0-0" />
+                             <label for="item-0-0-0">
+                             </label>
+                            <ul>
+                            </ul>   
+                        </li>
+                 </div>  -->
+                 <a href="./rent.html"><li>Rent</li></a>
+
+            <a href="./gallery.html"><li>Gallery</li></a>
+            <a href="./location.html"><li>Location</li></a>
+            <a href="./about.html"><li>About Gyasi </li></a>
+          </ul>
+        </div>
+      </nav>
+      <section>
+    <div> 
+       <p> Sire Studios is a mixed-use media space located in bushwick, brooklyn, founded by gyasi williams-kirtley, a student of the media world for over 10 years.  Gyasi is a brooklyn-born creative. with a strong background in journalism, her passion for music and culture has resulted in interviews with today’s top artistic minds, from erykah badu, shepard fairey, goldlink, tinashe, kehlani, and more.
+    </p>
+   
+        <p>
+            As a photographer, 
+
+            she spearheads a social commentary series about legacy; now archiving over 200 participants include naomi campbell and jaden smith. As a social media manager, 
+            
+            she’s assists companies through digital storytelling and is the present cordinator for afropunk
+     </p>
+     </div>
+
+    </section>
+    <div class="grid">
+        <div class="grid__item pos-1">
+            <div class="grid__item-img" style="background-image:url(sirelogos.jpg);"></div>
+        </div>
+        <div class="grid__item pos-2">
+            <div class="grid__item-img" style="background-image:url(sirelogos.jpg);"></div>
+        </div>
+        <div class="grid__item pos-3">
+            <div class="grid__item-img" style="background-image:url(sirelogos.jpg);"></div>
+        </div>
+        ...
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+   
+   <script>
+        export default class Grid {
+    constructor(el) {
+        this.DOM = {el: el};
+        this.gridItems = [];
+        this.items = [...this.DOM.el.querySelectorAll('.grid__item')];
+        this.items.forEach(item => this.gridItems.push(new GridItem(item)));
+       
+        this.showItems();
+    }
+    
+}
+
+const grid = new Grid(document.querySelector('.grid'));
+
+showItems() {
+    gsap.timeline()
+    .set(this.items, {scale: 0.7, opacity: 0}, 0)
+    .to(this.items, {
+        duration: 2,
+        ease: 'Expo.easeOut',
+        scale: 1,
+        stagger: {amount: 0.6, grid: 'auto', from: 'center'}
+    }, 0)
+    .to(this.items, {
+        duration: 3,
+        ease: 'Power1.easeOut',
+        opacity: 0.4,
+        stagger: {amount: 0.6, grid: 'auto', from: 'center'}
+    }, 0);
+}
+class GridItem {
+    constructor(el) {
+        this.DOM = {el: el};
+        this.move();
+    }
+  
+}
+
+move() {
+    // amount to move in each axis
+    let translationVals = {tx: 0, ty: 0};
+    // get random start and end movement boundaries
+    const xstart = getRandomNumber(15,60);
+    const ystart = getRandomNumber(15,60);
+   
+    // infinite loop
+    const render = () => {
+        // Calculate the amount to move.
+        // Using linear interpolation to smooth things out.
+        // Translation values will be in the range of [-start, start] for a cursor movement from 0 to the window's width/height
+        translationVals.tx = lerp(translationVals.tx, map(mousepos.x, 0, winsize.width, -xstart, xstart), 0.07);
+        translationVals.ty = lerp(translationVals.ty, map(mousepos.y, 0, winsize.height, -ystart, ystart), 0.07);
+       
+        gsap.set(this.DOM.el, {x: translationVals.tx, y: translationVals.ty});  
+        requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+}
+
+    </script>
+</body>
+
+</html>
