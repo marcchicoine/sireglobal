@@ -1,75 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <link rel="stylesheet" href="../style.css">
-    <style>
-      
-       
-        section {
-  min-height: 100vw;
-  background: #ffffff;
-  overflow: visible;
-  display: block;
-}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+<style>
 
-.gallery {
-  -moz-columns: 20rem;
-  columns: 20rem;
-  column-gap: 2rem;
-  width: 100%;
-  position: relative;
-  overflow: visible;
-}
-  .image-wrap {
-    transform: translateZ(0);
-    margin: 0 0 2rem;
-    position: relative;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    img::after {
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
-    }
-  
-* {
-  box-sizing: border-box;
-}
-
-h3 {
-  font-size: 3vw;
+header {
   text-align: center;
-  color: #6C7C90;
 }
-#menuToggle {
-    position: fixed;
+article {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100vw;
 }
-nav {
-    position: absolute;
+img {
+  max-width: 400px;
+  min-width: 320px;
+  height: auto;
+  margin:24px;
 }
-    </style>
+img a {
+  width: 390px;
+  margin: 5px;
+  transition: border-color 0.5s;
+}
+
+
+div.modal {
+  display: none;
+}
+
+div.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1;
+}
+
+div.modal-close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 20px 25px 20px 25px;
+  z-index: 2;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+}
+
+div.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 2;
+}
+
+</style>
 </head>
 <body>
+  <header>
+    <h1>Sire Global</h1>
+    <h2>Studio Gallery</h2>
+  </header>
   <nav role="navigation">
     <div id="menuToggle">
       <!--
@@ -100,45 +102,40 @@ nav {
       </ul>
     </div>
     </nav>
-      <h3>Studio Gallery</h3>
-
-<section>
-        <div class="gallery">
-         
-        <div class="image-wrap">
-            <img src="gallery/2.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/3.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/4.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/5.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/6.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/7.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/8.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/9.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/10.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/11.jpg" alt="">
-        </div>
-        <div class="image-wrap">
-            <img src="gallery/12.jpg" alt="">
-        </div>
-           </div>
-      </section>
+  <article class="photos">
+    
+    <a href="./gallery/2.jpg">
+      <img src="./gallery/2.jpg">
+    </a>
+    <a href="./gallery/3.jpg">
+      <img src="./gallery/3.jpg">
+    </a>
+    <a href="./gallery/4.jpg">
+      <img src="./gallery/4.jpg">
+    </a>
+    <a href="./gallery/5.jpg">
+      <img src="./gallery/5.jpg">
+    </a>
+    <a href="./gallery/6.jpg">
+      <img src="./gallery/6.jpg">
+    </a>
+    <a href="./gallery/7.jpg">
+      <img src="./gallery/7.jpg">
+    </a>
+    <a href="./gallery/8.jpg">
+      <img src="./gallery/8.jpg">
+    </a>
+  </article>
+  
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-close">Close</div>
+    <div class="modal-content"></div>      
+  </div>
+  <script src="./gallery/jquery.js"></script>
+  <script src="./gallery/lightbox.js"></script>
 </body>
 </html>
+
+
+  
